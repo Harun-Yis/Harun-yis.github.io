@@ -581,13 +581,235 @@ section,
   color: var(--accent-color);
 }
 
-@media (max-width: 768px) {
-  .hero h2 {
-    font-size: 32px;
-  }
+/* Enhanced Hero Styling */
+.hero-name {
+  font-size: 4.5rem !important;
+  font-weight: 800 !important;
+  background: linear-gradient(135deg, var(--heading-color) 0%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem !important;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
 
-  .hero p {
-    font-size: 20px;
+.hero-title {
+  font-size: 1.8rem !important;
+  font-weight: 500 !important;
+  margin-bottom: 1.5rem !important;
+  color: var(--heading-color) !important;
+}
+
+.hero-title .typed {
+  color: var(--accent-color) !important;
+  font-weight: 700 !important;
+  border-bottom: 3px solid var(--accent-color) !important;
+  padding-bottom: 2px !important;
+}
+
+.hero-tagline {
+  font-size: 1.3rem !important;
+  color: var(--default-color) !important;
+  margin-bottom: 2.5rem !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  max-width: 600px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.hero-skills {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  min-width: 140px;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.skill-item i {
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  margin-bottom: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.skill-item:hover i {
+  transform: scale(1.1);
+  color: var(--heading-color);
+}
+
+.skill-item span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--heading-color);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.hero-cta {
+  margin-bottom: 2.5rem;
+}
+
+.hero-cta .btn {
+  padding: 0.8rem 2rem;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+}
+
+.hero-cta .btn-primary {
+  background: linear-gradient(135deg, var(--accent-color) 0%, #0d6efd 100%);
+  border: none;
+  box-shadow: 0 4px 15px rgba(5, 99, 187, 0.3);
+}
+
+.hero-cta .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(5, 99, 187, 0.4);
+}
+
+.hero-cta .btn-outline-primary {
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  background: transparent;
+}
+
+.hero-cta .btn-outline-primary:hover {
+  background: var(--accent-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(5, 99, 187, 0.3);
+}
+
+/* Enhanced Social Links */
+.hero .social-links {
+  margin-top: 2rem;
+}
+
+.hero .social-links .social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  margin: 0 0.8rem;
+  font-size: 1.3rem;
+  color: var(--heading-color);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero .social-links .social-link:hover {
+  transform: translateY(-3px) scale(1.1);
+  background: var(--accent-color);
+  color: white;
+  box-shadow: 0 8px 25px rgba(5, 99, 187, 0.3);
+}
+
+/* Floating animation for skill items */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.skill-item {
+  animation: float 3s ease-in-out infinite;
+}
+
+.skill-item:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.skill-item:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.skill-item:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-name {
+    font-size: 3rem !important;
+  }
+  
+  .hero-title {
+    font-size: 1.4rem !important;
+  }
+  
+  .hero-tagline {
+    font-size: 1.1rem !important;
+    margin-bottom: 2rem !important;
+  }
+  
+  .hero-skills {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .skill-item {
+    min-width: 120px;
+    padding: 1rem;
+  }
+  
+  .skill-item i {
+    font-size: 2rem;
+  }
+  
+  .skill-item span {
+    font-size: 0.8rem;
+  }
+  
+  .hero-cta .btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero .social-links .social-link {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+    margin: 0 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-skills {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .skill-item {
+    min-width: 200px;
   }
 }
 

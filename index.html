@@ -27,6 +27,23 @@
   <!-- Main CSS File -->
   <link href="./assets/css/main.css" rel="stylesheet">
 
+  <!-- EmailJS for Contact Form -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your actual EmailJS public key
+    })();
+  </script>
+
+  <!-- Alternative: Formspree (simpler setup - uncomment below and comment out EmailJS above) -->
+  <!-- 
+  <script src="https://formspree.io/js/formbutton-v2.min.js" defer></script>
+  <script>
+    var formbutton = formbutton || function(){(formbutton.q = formbutton.q || []).push(arguments)};
+    formbutton("create", {action: "https://formspree.io/f/YOUR_FORM_ID"})
+  </script>
+  -->
+
   <!-- =======================================================
   * Template Name: MyResume
   * Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
@@ -64,20 +81,72 @@
 
       <div class="container" data-aos="zoom-out">
         <div class="row justify-content-center">
-          <div class="col-lg-9">
-            <h2>Harun Yishak</h2>
-            <p>I'm <span class="typed" data-typed-items="Data Analyst, Economist">Data Analyst</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
-            <div class="social-links">
-              <a href="https://x.com/haryis35?t=eQ0H5yjt199nwkmYRn5oCA&s=09"><i class="bi bi-twitter-x"></i></a>
-              <a href="https://github.com/Harun-Yis"><i class="bi bi-github"></i></a>
-              <a href="#"><i class="bi bi-telegram"></i></a>
-              <a href="www.linkedin.com/in/harun-yishak"><i class="bi bi-linkedin"></i></a>
+          <div class="col-lg-10 text-center">
+            <!-- Main Name with enhanced animation -->
+            <h2 class="hero-name" data-aos="fade-down" data-aos-delay="200">Harun Yishak</h2>
+            
+            <!-- Professional Title with enhanced typing -->
+            <p class="hero-title" data-aos="fade-up" data-aos-delay="400">
+              I'm a <span class="typed" data-typed-items="Data Analyst, Economist, Data Scientist, Business Intelligence Specialist">Data Analyst</span>
+              <span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span>
+            </p>
+            
+            <!-- Compelling tagline for recruiters -->
+            <p class="hero-tagline" data-aos="fade-up" data-aos-delay="600">
+              Transforming raw data into actionable insights that drive business decisions
+            </p>
+            
+            <!-- Key Skills with animated icons -->
+            <div class="hero-skills" data-aos="fade-up" data-aos-delay="800">
+              <div class="skill-item" data-aos="zoom-in" data-aos-delay="1000">
+                <i class="bi bi-database-fill"></i>
+                <span>SQL & Database</span>
+              </div>
+              <div class="skill-item" data-aos="zoom-in" data-aos-delay="1200">
+                <i class="bi bi-graph-up"></i>
+                <span>Data Visualization</span>
+              </div>
+              <div class="skill-item" data-aos="zoom-in" data-aos-delay="1400">
+                <i class="bi bi-code-slash"></i>
+                <span>Python & R</span>
+              </div>
+              <div class="skill-item" data-aos="zoom-in" data-aos-delay="1600">
+                <i class="bi bi-bar-chart-fill"></i>
+                <span>Statistical Analysis</span>
+              </div>
+            </div>
+            
+            <!-- Call to Action -->
+            <div class="hero-cta" data-aos="fade-up" data-aos-delay="1800">
+              <a href="#portfolio" class="btn btn-primary btn-lg me-3">
+                <i class="bi bi-eye me-2"></i>View My Work
+              </a>
+              <a href="#contact" class="btn btn-outline-primary btn-lg">
+                <i class="bi bi-envelope me-2"></i>Get In Touch
+              </a>
+            </div>
+            
+            <!-- Social Links with enhanced styling -->
+            <div class="social-links" data-aos="fade-up" data-aos-delay="2000">
+              <a href="https://x.com/haryis35?t=eQ0H5yjt199nwkmYRn5oCA&s=09" target="_blank" class="social-link">
+                <i class="bi bi-twitter-x"></i>
+              </a>
+              <a href="https://github.com/Harun-Yis" target="_blank" class="social-link">
+                <i class="bi bi-github"></i>
+              </a>
+              <a href="https://t.me/harunyis256" target="_blank" class="social-link">
+                <i class="bi bi-telegram"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/harun-yishak/" target="_blank" class="social-link">
+                <i class="bi bi-linkedin"></i>
+              </a>
             </div>
           </div>
         </div>
       </div>
 
     </section><!-- /Hero Section -->
+
 
     <!-- About Section -->
     <section id="about" class="about section">
@@ -497,7 +566,7 @@
           </div>
 
           <div class="col-lg-8">
-            <form action="./forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+            <form id="contactForm" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
               <div class="row gy-4">
 
                 <div class="col-md-6">
@@ -541,11 +610,10 @@
       <h3 class="sitename">Harun Yishak</h3>
       <p> Data Analyst and Economist</p>
       <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href=""><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-skype"></i></a>
-        <a href="www.linkedin.com/in/harun-yishak"><i class="bi bi-linkedin"></i></a>
+        <a href="https://x.com/haryis35?t=eQ0H5yjt199nwkmYRn5oCA&s=09" target="_blank"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=10000890000000000" target="_blank"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/harun_yishak/" target="_blank"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/harun-yishak/" target="_blank"><i class="bi bi-linkedin"></i></a>
       </div>
       <div class="container">
         <div class="copyright">

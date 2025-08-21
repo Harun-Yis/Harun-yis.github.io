@@ -101,7 +101,155 @@
       loop: true,
       typeSpeed: 100,
       backSpeed: 50,
-      backDelay: 2000
+      backDelay: 2000,
+      showCursor: true,
+      cursorChar: '|',
+      autoInsertCss: true
+    });
+  }
+
+  /**
+   * Enhanced Hero Animations
+   */
+  function initHeroAnimations() {
+    // Add parallax effect to hero background
+    const heroSection = document.querySelector('.hero');
+    const heroImage = document.querySelector('.hero img');
+    
+    if (heroSection && heroImage) {
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+        heroImage.style.transform = `translateY(${rate}px)`;
+      });
+    }
+
+    // Add floating effect to skill items
+    const skillItems = document.querySelectorAll('.skill-item');
+    skillItems.forEach((item, index) => {
+      item.addEventListener('mouseenter', () => {
+        item.style.animationPlayState = 'paused';
+      });
+      
+      item.addEventListener('mouseleave', () => {
+        item.style.animationPlayState = 'running';
+      });
+    });
+
+    // Add click effect to CTA buttons
+    const ctaButtons = document.querySelectorAll('.hero-cta .btn');
+    ctaButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        // Create ripple effect
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.classList.add('ripple');
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+          ripple.remove();
+        }, 600);
+      });
+    });
+  }
+
+  /**
+   * Add CSS for ripple effect
+   */
+  function addRippleStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+      .btn {
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.6);
+        transform: scale(0);
+        animation: ripple-animation 0.6s linear;
+        pointer-events: none;
+      }
+      
+      @keyframes ripple-animation {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  /**
+   * Initialize hero animations when page loads
+   */
+  window.addEventListener('load', () => {
+    addRippleStyles();
+    initHeroAnimations();
+    initContactForm();
+  });
+
+  /**
+   * Contact Form Handling with EmailJS
+   */
+  function initContactForm() {
+    const contactForm = document.getElementById('contactForm');
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Show loading state
+      const loadingDiv = contactForm.querySelector('.loading');
+      const errorDiv = contactForm.querySelector('.error-message');
+      const sentDiv = contactForm.querySelector('.sent-message');
+      
+      loadingDiv.style.display = 'block';
+      errorDiv.style.display = 'none';
+      sentDiv.style.display = 'none';
+
+      // Get form data
+      const formData = new FormData(contactForm);
+      const templateParams = {
+        from_name: formData.get('name'),
+        from_email: formData.get('email'),
+        subject: formData.get('subject'),
+        message: formData.get('message'),
+        to_email: 'haryis35@gmail.com' // Your email address
+      };
+
+      // Send email using EmailJS
+      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+        .then(function(response) {
+          loadingDiv.style.display = 'none';
+          sentDiv.style.display = 'block';
+          contactForm.reset();
+          
+          // Hide success message after 5 seconds
+          setTimeout(() => {
+            sentDiv.style.display = 'none';
+          }, 5000);
+        }, function(error) {
+          loadingDiv.style.display = 'none';
+          errorDiv.style.display = 'block';
+          errorDiv.textContent = 'Sorry, there was an error sending your message. Please try again.';
+          
+          // Hide error message after 5 seconds
+          setTimeout(() => {
+            errorDiv.style.display = 'none';
+          }, 5000);
+        });
     });
   }
 
