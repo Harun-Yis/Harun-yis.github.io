@@ -230,7 +230,7 @@
       };
 
       // Send email using EmailJS
-      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+      emailjs.send('service_ezae0yh', 'template_t0qpudc', templateParams)
         .then(function(response) {
           loadingDiv.style.display = 'none';
           sentDiv.style.display = 'block';
